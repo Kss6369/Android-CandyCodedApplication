@@ -5,8 +5,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.telecom.Call;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.pluralsight.candycoded.DB.CandyContract;
@@ -70,4 +73,19 @@ public class DetailActivity extends AppCompatActivity {
     // ***
     // TODO - Task 4 - Share the Current Candy with an Intent
     // ***
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        return super.onOptionsItemSelected(item);
+         Call createShareIntent();
+    }
+    private void createShareIntent(){
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, resources.getString(R.string.largeTextForFacebookWhatsapp) + "https://play.google.com/store/apps/details?id=" + context.getPackageName());
+        startActivity(shareIntent);
+
+    }
+
 }
