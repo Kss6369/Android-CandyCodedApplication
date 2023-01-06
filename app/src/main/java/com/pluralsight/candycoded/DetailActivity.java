@@ -16,6 +16,7 @@ import com.pluralsight.candycoded.DB.CandyContract;
 import com.pluralsight.candycoded.DB.CandyContract.CandyEntry;
 import com.pluralsight.candycoded.DB.CandyDbHelper;
 import com.squareup.picasso.Picasso;
+import android.view.MenuItem;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -73,19 +74,17 @@ public class DetailActivity extends AppCompatActivity {
     // ***
     // TODO - Task 4 - Share the Current Candy with an Intent
     // ***
+
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-
+    public boolean onOptionsItemSelected(MenuItem item) {
+        createShareIntent();
         return super.onOptionsItemSelected(item);
-
     }
-    private void createShareIntent(){
-        Intent shareIntent = new Intent();
-        shareIntent.setAction(Intent.ACTION_SEND);
+
+    private void createShareIntent() {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
-        //shareIntent.putExtra(Intent.EXTRA_TEXT, resources.getString(R.string.largeTextForFacebookWhatsapp) + "https://play.google.com/store/apps/details?id=" + context.getPackageName());
+        shareIntent.putExtra(Intent.EXTRA_TEXT, SHARE_DESCRIPTION + mCandyImageUrl + HASHTAG_CANDYCODED);
         startActivity(shareIntent);
-
     }
-
 }
