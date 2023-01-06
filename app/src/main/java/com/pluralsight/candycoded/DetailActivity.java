@@ -77,13 +77,13 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
 
         return super.onOptionsItemSelected(item);
-         Call createShareIntent();
+
     }
     private void createShareIntent(){
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, resources.getString(R.string.largeTextForFacebookWhatsapp) + "https://play.google.com/store/apps/details?id=" + context.getPackageName());
+        //shareIntent.putExtra(Intent.EXTRA_TEXT, resources.getString(R.string.largeTextForFacebookWhatsapp) + "https://play.google.com/store/apps/details?id=" + context.getPackageName());
         startActivity(shareIntent);
 
     }
